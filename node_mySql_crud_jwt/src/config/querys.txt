@@ -1,0 +1,14 @@
+
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(250),
+    age INT,
+    `like` INT
+);
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(250),
+    email VARCHAR(250),
+    password VARCHAR(250)
+);
