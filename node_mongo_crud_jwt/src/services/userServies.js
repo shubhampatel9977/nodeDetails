@@ -1,25 +1,25 @@
 const userModel = require("../models/userModel");
 
-const signIn = async (payload) => {
+const signInService = async (payload) => {
   try {
     const add = new userModel(payload);
     const sighIn = await add.save();
     return sighIn;
   } catch (error) {
-    console.error("Someting wrong in signIn", error.message);
+    console.error("Someting wrong in signInService", error.message);
   }
 };
 
-const logIn = async (data) => {
+const logInService = async (data) => {
   try {
-      const userData = await userModel.findOne(data);
+      const userData = await userModel.findOne({ email: data });
       return userData;
   } catch (error) {
-    console.error("Someting wrong in logIn", error.message);
+    console.error("Someting wrong in logInService", error.message);
   }
 };
 
 module.exports = {
-  signIn,
-  logIn,
+  signInService,
+  logInService,
 };

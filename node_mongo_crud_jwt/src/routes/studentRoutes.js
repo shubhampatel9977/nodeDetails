@@ -1,15 +1,14 @@
 const express = require("express");
-const router = express.Router();
-
-const authMiddleware = require("../middleware/authMiddleware");
+const { authUser } = require("../middleware/generateToken");
 const studentController = require("../controllers/studentController");
 
+const router = express.Router();
+
 // Define routes
-router.get('/', authMiddleware, studentController.getAllStudents);
-router.get('/:id', authMiddleware, studentController.getStudentById);
-router.post('/', authMiddleware, studentController.createStudent);
-router.put('/:id', authMiddleware, studentController.updateStudentById);
-router.patch('/:id', authMiddleware, studentController.updateStudentLikeById);
-router.delete('/:id', authMiddleware, studentController.deleteStudentById);
+router.post('/', authUser, studentController.createStudentController);
+router.get('/', authUser, studentController.getAllStudentsController);
+router.get('/:id', authUser, studentController.getStudentByIdController);
+router.put('/:id', authUser, studentController.updateStudentByIdController);
+router.delete('/:id', authUser, studentController.deleteStudentByIdController);
 
 module.exports = router;

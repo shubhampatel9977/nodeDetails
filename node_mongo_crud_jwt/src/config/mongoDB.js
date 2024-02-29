@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
+const dbURL = process.env.DB_URL;
+const dbName = process.env.DB_NAME;
 
-function run() {
-  const mongoString = "mongodb://localhost:27017/demoMongoDB";
+function connection() {
+  const mongoString = `${dbURL}/${dbName}`;
   mongoose.connect(mongoString);
   const database = mongoose.connection;
   database.on('error', (error) => {
-    console.log(error)
+    console.log(error);
   })
   
   database.once('connected', () => {
@@ -13,7 +15,7 @@ function run() {
   })
 }
 
-module.exports = run;
+module.exports = connection;
 
 
 
