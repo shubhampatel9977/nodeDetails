@@ -12,6 +12,11 @@ app.use(bodyParser.json());
 
 DBConnection();
 
+// default route
+app.get("/", (req, res) => {
+  res.status(200).json("Api working fine!");
+});
+
 app.use("/", routes);
 
 app.listen(port, () => {
